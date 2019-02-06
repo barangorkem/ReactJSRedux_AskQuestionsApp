@@ -1,25 +1,44 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import 'semantic-ui-css/semantic.min.css';
+import { Route,Switch } from 'react-router-dom';
+import { Container} from 'semantic-ui-react';
+import Footer from './components/Footer';
+import SignIn from './components/pages/SignIn';
+import SignUp from './components/pages/SignUp';
+import Profile from './components/pages/Profile';
+import Layout from './container/Layout';
 
 class App extends Component {
+
+     
+
   render() {
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+
+
+
+
+        <Container text>
+
+
+        <Layout >
+          <Switch>
+          <Route path="/signin" exact component={SignIn}></Route>
+          <Route path="/signup" exact component={SignUp}></Route>
+          <Route path="/profile" exact component={Profile}></Route>
+          </Switch>
+          </Layout>
+
+
+
+
+
+        </Container>
+        <Footer></Footer>
+
       </div>
     );
   }

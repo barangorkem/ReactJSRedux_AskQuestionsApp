@@ -21,7 +21,7 @@ class Profile extends Component {
         return (
             <div>
                 <h2>Profile</h2>
-                {isUserLogin()?<div><h3>Profile</h3><button type="button" onClick={this.logout}>LogOut</button></div>
+                {isUserLogin()?<div><h3>Profile Content</h3></div>
                 :<Redirect to="/signin"></Redirect>}
             </div>
         );

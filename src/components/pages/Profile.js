@@ -6,12 +6,13 @@ import {isUserLogin} from '../../helpers/tokenAuthentication';
 class Profile extends Component {
 
 
-    componentDidMount()
+    componentWillMount()
     {
         debugger
         if(isUserLogin())
         {
             this.props.getUserClaims();
+            console.log(this.props.users)
         }
         
         

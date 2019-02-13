@@ -46,7 +46,7 @@ class Header extends Component {
 
               {!isUserLogin()?<Menu.Item as={Link} to="/signup">SignUp</Menu.Item>:''}
               {!isUserLogin()?<Menu.Item as={Link}  to="/signin">SignIn</Menu.Item>:''}
-
+              {isUserLogin()?<Menu.Item as={Link} to="/askquestion">AskQuestion</Menu.Item>:''}
               {isUserLogin()?<Menu.Item as={Link} to="/profile">Profile</Menu.Item>:''}
               {isUserLogin()?<Menu.Item  onClick={this.props.logout}>LogOut</Menu.Item>:''}
 

@@ -29,8 +29,8 @@ class SignInForm extends Component {
     {isUserLogin()?<Redirect to="/profile"></Redirect>: 
      <Form  onSubmit={this.onSubmit}>
       <Form.Field>    
-      <label>username</label>
-      <input placeholder='username' id="username" name="username" value={this.state.username} onChange={this.onChange} />
+      <label>Username</label>
+      <input placeholder='Username' id="username" name="username" value={this.state.username} onChange={this.onChange} />
     </Form.Field>
     <Form.Field>
       <label>Password</label>

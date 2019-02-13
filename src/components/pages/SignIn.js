@@ -7,7 +7,6 @@ class SignIn extends Component {
 
     componentWillMount()
     {
-        console.log("cwp")
         debugger
         if(Object.keys(this.props.users.isLoginError).length!==0)
         {
@@ -17,7 +16,6 @@ class SignIn extends Component {
 
 
     render() {
-        console.log("render");
         return (
      <SignInForm users={this.props.users} onUserLoginSubmit={this.props.onUserLoginSubmit}></SignInForm>
      

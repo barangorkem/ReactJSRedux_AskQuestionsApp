@@ -8,6 +8,7 @@ import SignIn from './components/pages/SignIn';
 import SignUp from './components/pages/SignUp';
 import Profile from './components/pages/Profile';
 import Layout from './container/Layout';
+import AskQuestion from './components/pages/AskQuestion';
 
 class App extends Component {
 
@@ -29,6 +30,7 @@ class App extends Component {
           <Route path="/signin" exact component={SignIn}></Route>
           <Route path="/signup" exact component={SignUp}></Route>
           <Route path="/profile" exact component={Profile}></Route>
+          <Route path="/askquestion" exact component={AskQuestion}></Route>
           </Switch>
           </Layout>
 

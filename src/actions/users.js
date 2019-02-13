@@ -1,6 +1,7 @@
 
 import axios from 'axios';
 import {url} from '../config/env';
+import {getUserToken} from '../helpers/tokenAuthentication';
 export const NEW_USER="NEW_USER";
 export const NEW_USER_ERROR="NEW_USER_ERROR";
 export const LOGIN_USER="LOGIN_USER";
@@ -39,7 +40,7 @@ export function onUserLoginSubmit({username,password})
 
         }).catch(error=>dispatch({
             type:LOGIN_USER_ERROR,
-            payload:error.response.data
+            payload:error.response
         }));
 
     }
@@ -48,10 +49,10 @@ export function getUserClaims()
 {
     debugger
     const headers = {
-        'Authorization': 'Bearer '+localStorage.getItem('userToken')
+        'Authorization': 'Bearer '+getUserToken()
     }
     return dispatch=> {
-        axios.get(`${url}/api/getUserClaims`,{headers:headers})
+        axios.get(`${url}/api/user/GetUserClaims`,{headers:headers})
         .then(response=>
             dispatch({
             type:USER_CLAIMS,

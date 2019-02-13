@@ -10,3 +10,6 @@ export const isUserLogin=()=>{
         return false;
     }
 }
+export const getUserToken=()=>{
+    return localStorage.getItem("userToken");
+}

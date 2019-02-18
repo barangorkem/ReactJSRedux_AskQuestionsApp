@@ -36,7 +36,7 @@ class AskQuestionForm extends Component {
 
     render() {
 
-        let durationBody = this.props.categories.category.map((item) => {
+        let durationBody = this.props.categories.categories.map((item) => {
             return (
 
 

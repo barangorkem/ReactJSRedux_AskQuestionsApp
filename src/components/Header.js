@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import {isUserLogin} from '../helpers/tokenAuthentication';
 import {connect} from 'react-redux';
 import {logout} from '../actions/users';
+import {listCategories} from '../actions/categories';
 class Header extends Component {
 
 
@@ -21,9 +22,26 @@ class Header extends Component {
 
   unStickTopMenu = () => this.setState({ menuFixed: false })
   
+  componentDidMount()
+  {
+    this.props.listCategories();
+  }
 
 
   render() {
+
+
+    let categoriesList = this.props.categories.categories.map((item) => {
+      return (
+
+        <Dropdown.Item key={item.CategoryId} as={Link} to={`/category/${item.CategoryId}`}>{item.CategoryName}</Dropdown.Item>
+       
+         
+
+
+      );
+  });
+
     const { menuFixed } = this.state
     
     return (
@@ -45,28 +63,17 @@ class Header extends Component {
               <Menu.Item header>Project Name</Menu.Item>
 
               {!isUserLogin()?<Menu.Item as={Link} to="/signup">SignUp</Menu.Item>:''}
-              {!isUserLogin()?<Menu.Item as={Link}  to="/signin">SignIn</Menu.Item>:''}
-              {isUserLogin()?<Menu.Item as={Link} to="/askquestion">AskQuestion</Menu.Item>:''}
-              {isUserLogin()?<Menu.Item as={Link} to="/profile">Profile</Menu.Item>:''}
+              {!isUserLogin()?<Menu.Item as={Link} to="/signin">SignIn</Menu.Item>:''}
+              {isUserLogin()?<Menu.Item as={Link}  to="/askquestion">AskQuestion</Menu.Item>:''}
+              {isUserLogin()?<Menu.Item as={Link}  to="/profile">Profile</Menu.Item>:''}
               {isUserLogin()?<Menu.Item  onClick={this.props.logout}>LogOut</Menu.Item>:''}
 
 
               <Menu.Menu position='right'>
-                <Dropdown text='Dropdown' pointing className='link item'>
+                <Dropdown text='Categories' pointing className='link item'>
                   <Dropdown.Menu>
-                    <Dropdown.Item>List Item</Dropdown.Item>
-                    <Dropdown.Item>List Item</Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Header>Header Item</Dropdown.Header>
-                    <Dropdown.Item>
-                      <i className='dropdown icon' />
-                      <span className='text'>Submenu</span>
-                      <Dropdown.Menu>
-                        <Dropdown.Item>List Item</Dropdown.Item>
-                        <Dropdown.Item>List Item</Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown.Item>
-                    <Dropdown.Item>List Item</Dropdown.Item>
+                   {categoriesList}
+                   
                   </Dropdown.Menu>
                 </Dropdown>
                 
@@ -78,14 +85,14 @@ class Header extends Component {
     );
   }
 }
-const mapStateToProps=({users})=>{
+const mapStateToProps=({users,categories})=>{
 return {
-  users
+  users,categories
 }
 };
 
 const mapDispatchTheProps={
-  logout
+  logout,listCategories
 }
 
 export default connect(mapStateToProps,mapDispatchTheProps)(Header);

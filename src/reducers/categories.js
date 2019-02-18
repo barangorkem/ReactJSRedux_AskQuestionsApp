@@ -2,7 +2,8 @@
 import {LIST_CATEGORY} from '../actions/categories';
 
 const initialState={
-    category:[]
+    categories:[],
+
 };
 
 export default(state=initialState,action)=>
@@ -15,8 +16,9 @@ export default(state=initialState,action)=>
         case LIST_CATEGORY:
         return({
             ...state,
-            category:action.payload
+            categories:action.payload
         })
+       
         default:
         return state;
     }

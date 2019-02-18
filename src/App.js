@@ -9,6 +9,7 @@ import SignUp from './components/pages/SignUp';
 import Profile from './components/pages/Profile';
 import Layout from './container/Layout';
 import AskQuestion from './components/pages/AskQuestion';
+import CategoryContent from './components/pages/CategoryContent';
 
 class App extends Component {
 
@@ -31,6 +32,7 @@ class App extends Component {
           <Route path="/signup" exact component={SignUp}></Route>
           <Route path="/profile" exact component={Profile}></Route>
           <Route path="/askquestion" exact component={AskQuestion}></Route>
+          <Route path="/category/:id" exact component={CategoryContent}></Route>
           </Switch>
           </Layout>
 

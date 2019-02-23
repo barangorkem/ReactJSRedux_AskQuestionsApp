@@ -1,9 +1,21 @@
 
+import {logout} from '../actions/users';
 
 export const isUserLogin=()=>{
-    if(localStorage.getItem("userToken")!=null)
+    
+    if(localStorage.getItem("userToken")!=null )
     {
-        return true;
+        debugger
+        if(localStorage.getItem("userExpires")>Date.now())
+        {
+            return true;
+        }
+       else
+       {
+            logout();
+            return false;
+       }
+        
     }
     else
     {

@@ -29,8 +29,10 @@ export function onUserLoginSubmit({username,password})
     const data = "username=" + username + "&password=" + password + "&grant_type=password";
     return dispatch=>{
         axios.post(`${url}/token`, data).then(response=>response.data).then(data=>{
+            console.log(data[".expires"]);
             localStorage.setItem('userToken',data.access_token);
             localStorage.setItem('userRole',data.role);
+            localStorage.setItem('userExpires',data[".expires"]);
 
     }).then(response=>{
             dispatch({
@@ -67,6 +69,8 @@ export function logout()
     
         localStorage.removeItem('userToken');
         localStorage.removeItem('userRole');
+        localStorage.removeItem('userExpires');
+
         return { type: USER_LOGOUT }
 
 }

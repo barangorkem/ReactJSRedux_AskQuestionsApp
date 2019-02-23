@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCategory } from '../../actions/questions';
+import CategoryQuestions from '../CategoryQuestions';
 class CategoryContent extends Component {
 
     componentDidMount() {
@@ -16,21 +17,13 @@ class CategoryContent extends Component {
       }
     render() {
 
-        let questionList=this.props.questions.questionData.map((item)=>{
-            return (
-                <div>
-                <h4>{item.QuestionId}</h4>
-                <h4>{item.QuestionTitle}</h4>
-                <h4>{item.QuestionTime}</h4>
-                <h4>{item.ApplicationUser.UserName}</h4>
-                </div>
-            )
-        })
+       
         console.log(this.props)
         return (
             <div>
                 <h1>CategoryContent</h1>
-                {questionList}
+                <br></br>
+                <CategoryQuestions questions={this.props.questions}></CategoryQuestions>
             </div>
         );
     }

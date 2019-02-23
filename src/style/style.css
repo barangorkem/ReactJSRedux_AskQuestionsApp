@@ -2,3 +2,7 @@
 .ui button{
     float: right;
 }
+
+.ui.comments .comment .avatar img, .ui.comments .comment img.avatar{
+    width: 130%;
+}
